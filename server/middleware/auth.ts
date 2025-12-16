@@ -10,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET
 export default defineEventHandler((event) => {
   const url = event.node.req.url || ''
 
-  if (url.startsWith('/api/auth')) {
+  if (url.startsWith('/api/auth') || !url.startsWith('/api')) {
     return
   }
 
