@@ -58,8 +58,8 @@ export default defineEventHandler(async (event) => {
 
   return {
     statusCode: 200,
-    body: {
-      success: true,
+     success: true,
+    data: {
       message: 'Login successful',
       tokenType: "Bearer",
       accessToken: token,

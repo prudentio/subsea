@@ -12,7 +12,9 @@ export default defineEventHandler(async (event) => {
       username: true,
       name: true,
       isSuperuser: true,
+      createdBy: true,
       createdAt: true,
+      updatedAt: true,
       roles: {
         select: {
           role: {
@@ -26,6 +28,18 @@ export default defineEventHandler(async (event) => {
     },
   })
 
+  const response = {
+    id: user?.id,
+    username: user?.username,
+    name: user?.name,
+    isSuperuser: user?.isSuperuser,
+    rolesId: user?.roles.map(r => r.role.id),
+    rolesName: user?.roles.map(r => r.role.name),
+    createdBy: user?.createdBy,
+    createdAt: user?.createdAt,
+    updatedAt: user?.updatedAt
+  }
+
   if (!user) {
     throw createError({
       statusCode: 404,
@@ -35,6 +49,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     success: true,
-    data: user,
+    data: response,
   }
 })
