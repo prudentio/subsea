@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     password: string
   }>(event)
 
+  
   if (!body?.username || !body?.password) {
     return {
       statusCode: 400,
