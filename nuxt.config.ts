@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     jwtSecret: "",
   },
+   ssr: false,
    modules: [
         '@pinia/nuxt',
         '@primevue/nuxt-module'

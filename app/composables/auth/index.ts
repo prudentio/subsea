@@ -12,6 +12,7 @@ export const useAuth = defineStore("authStore", () => {
 
     return jwtDecode<{ sub: string, iat: number, exp: number }>(jwtToken.value)
   })
+  
   const userId = ref<string>()
 
   const state = ref({

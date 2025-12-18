@@ -53,3 +53,31 @@ export async function useMainServiceFetch<R, O extends MainServiceOpt = MainServ
     ...(bodyInCbor == null ? {} : { body: bodyInCbor }),
   })
 }
+
+export function useGeoserverFetch<
+  R,
+  O extends MainServiceOpt = MainServiceOpt
+>(
+  path: string,
+  opt: O = {} as O
+) {
+  const apiUrlWrapped = "http://127.0.0.1:8080/geoserver/rest"
+
+  const objHeader = get(opt, "headers", {}) as Record<string, string>
+  const headers = new Headers(objHeader)
+
+  const username = 'admin'
+  const password = 'geoserver'
+  headers.set('Authorization', `Basic ${btoa(`${username}:${password}`)}`)
+
+  const bodyInCbor = opt.cbor
+  if (bodyInCbor != null) {
+    headers.set('Content-Type', 'application/cbor')
+  }
+
+  return $fetch<R>(apiUrlWrapped + path, {
+    ...omit(opt, ['headers']),
+    headers,
+    ...(bodyInCbor == null ? {} : { body: bodyInCbor }),
+  })
+}

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
-import { RoleService, type RoleResponse } from '~/services/role'
+import { RoleService, type RoleResponse } from '~/services/api/role'
 
 const roles = ref<RoleResponse[]>([])
 const loading = ref(false)

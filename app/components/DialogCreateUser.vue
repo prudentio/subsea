@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { UserService, type UserRequest } from '~/services/user';
+import { UserService, type UserRequest } from '~/services/api/user';
 
 const visible = defineModel<boolean>("visible", {
     default: false,

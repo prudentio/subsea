@@ -2,7 +2,7 @@ import { prisma } from '../../utils/prisma'
 
 export default defineEventHandler(async (event) => {
   const userId = event.context.user.sub
-
+  
   const user = await prisma.userAccount.findUnique({
     where: {
       id: userId,

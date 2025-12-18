@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { RoleService, type RoleRequest } from '~/services/role';
-import { UserService, type UserRequest } from '~/services/user';
+import { RoleService, type RoleRequest } from '~/services/api/role';
+import { UserService, type UserRequest } from '~/services/api/user';
 
 const visible = defineModel<boolean>("visible", {
     default: false,
